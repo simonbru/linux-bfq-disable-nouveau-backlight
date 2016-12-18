@@ -1,0 +1,22 @@
+*** linux-4.8/drivers/gpu/drm/nouveau/nouveau_backlight.c.old	2016-12-18 19:53:25.951502205 +0100
+--- linux-4.8/drivers/gpu/drm/nouveau/nouveau_backlight.c	2016-12-18 19:53:59.431879061 +0100
+***************
+*** 217,222 ****
+--- 217,223 ----
+  int
+  nouveau_backlight_init(struct drm_device *dev)
+  {
++ 	return 0;
+  	struct nouveau_drm *drm = nouveau_drm(dev);
+  	struct nvif_device *device = &drm->device;
+  	struct drm_connector *connector;
+***************
+*** 245,250 ****
+--- 246,252 ----
+  void
+  nouveau_backlight_exit(struct drm_device *dev)
+  {
++ 	return 0;
+  	struct nouveau_drm *drm = nouveau_drm(dev);
+  
+  	if (drm->backlight) {

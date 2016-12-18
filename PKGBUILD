@@ -78,6 +78,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'config' 'config.x86_64'
          # pacman hook for initramfs regeneration
         '99-linux.hook'
+	 # Disable nouveau backlight
+        'disable-nouveau-backlight.patch'
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'net_handle_no_dst_on_skb_in_icmp6_send.patch'
@@ -120,6 +122,9 @@ prepare() {
         msg "Patching source with gcc patch to enable more cpus types"
 	patch -Np1 -i "${srcdir}/${_gcc_patch}"
 
+    ### Disable nouveau backlight
+        msg "Disable creation of backlight device by nouveau driver"
+        patch -Np1 -i "${srcdir}/disable-nouveau-backlight.patch"
 	
     ### Clean tree and copy ARCH config over
 	msg "Running make mrproper to clean source tree"
